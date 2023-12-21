@@ -1,5 +1,8 @@
 # Flask Quote API
 
+![Python](https://img.shields.io/badge/python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+
 This simple Flask application provides a basic API for managing a collection of quotes. It allows users to retrieve all quotes, get a random quote, and add new quotes to the collection.
 
 ## Getting Started
