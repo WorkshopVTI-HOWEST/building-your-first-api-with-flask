@@ -14,7 +14,7 @@ Flask (install using `pip install Flask`)
 1. Clone the repository:
 
    ```bash
-   git clone [<repository-url>](https://github.com/mattjemattias/flask.git)
+   git clone https://github.com/mattjemattias/flask.git
     ```
 
 2. Navigate to the project directory:
@@ -63,19 +63,21 @@ The Flask development server should now be running, and you can access the API a
     Endpoint: /quotes
     Method: POST
     Description: Adds a new quote to the collection.
+
     Request Body:
     {
         "quote": "Your new quote here"
     }
-    Response:
-    Success:
-        {
-            "message": "Quote added successfully"
-        }
-    Error:
-        {
-            "error": "Invalid request"
-        }
+
+    Success Response:
+    {
+        "message": "Quote added successfully"
+    }
+    
+    Error Response:
+    {
+        "error": "Invalid request"
+    }
 
 ```
 
