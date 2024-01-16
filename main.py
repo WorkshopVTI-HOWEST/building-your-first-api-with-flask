@@ -21,6 +21,18 @@ def get_random_quote():
     random_quote = random.choice(quotes)
     return jsonify({'quote': random_quote})
 
+@app.route('/employees', methods=['GET'])
+def get_employees():
+    employees_info = [
+        {'name': 'Hank', 'age': 21, 'position': 'Software Engineer'},
+        {'name': 'Alice', 'age': 28, 'position': 'Data Scientist'},
+        {'name': 'Mary', 'age': 29, 'position': 'Software Engineer', 'flag': 'ptb-network'},
+        {'name': 'Bob', 'age': 24, 'position': 'UX Designer'},
+        {'name': 'Emma', 'age': 32, 'position': 'Project Manager'},
+    ]
+
+    return jsonify({'employees_info': employees_info})
+
 @app.route('/quotes', methods=['POST'])
 def add_quote():
     data = request.get_json()
