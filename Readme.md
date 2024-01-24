@@ -18,7 +18,7 @@ pip install flask
 pip install flask-cors
 ```
 
-Start the web applicatie met 'Live Server' in Visual Studio Code
+Navigeer naar de 'frontend' map en klik op 'index.html'. Start daarna the web applicatie met 'Live Server' in Visual Studio Code. Er zal een browser openen met de webapplicatie in je standaard browser.
 
 ![Alt text](screenshot.png)
 
