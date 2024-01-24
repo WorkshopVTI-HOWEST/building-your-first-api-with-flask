@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("randomQuoteForm").addEventListener("submit", function (e) {
     getRandomQuote(e);
   });
+
+  document.getElementById("clearQuotes").addEventListener("submit", function (e) {
+    removeQuotes(e);
+  });
 });
 
 function getRandomQuote(e) {
@@ -37,6 +41,27 @@ function getQuotes() {
       });
     });
 }
+
+function removeQuotes(e) {
+  e.preventDefault();
+  console.log("test");
+  fetch(API_URL + "/quotes/clear", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const quoteList = document.getElementById("quoteList");
+      quoteList.innerHTML = "";
+      getQuotes();
+    })
+    .catch((error) => {
+      console.error("Error clearing quotes:", error);
+    });
+}
+
 
 function sendQuote(e) {
   e.preventDefault();
