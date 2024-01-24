@@ -3,87 +3,79 @@
 ![Python](https://img.shields.io/badge/python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
-This simple Flask application provides a basic API for managing a collection of quotes. It allows users to retrieve all quotes, get a random quote, and add new quotes to the collection.
+## Doel
 
-## Getting Started
+In deze oefening maken we een API met Flask. Deze API zal quotes opslaan en weergeven. De quotes worden opgeslagen in een lijst. Een API wordt gebruikt om data te delen tussen verschillende applicaties. In dit geval zal de API de quotes delen met een webapplicatie.
 
-### Prerequisites
+## Uitleg
 
-Python 3.x
-Flask (install using `pip install Flask`)
+### 1. Voorbereiding
 
-## Installation
+Zorg ervoor dat je Python 3.x hebt geïnstalleerd. Installeer vervolgens Flask en Flask-CORS met behulp van de volgende commando's:
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/mattjemattias/flask.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd flask
-    ```
-
-3. Run the application:
-
-    ```bash
-    python main.py
-    ```
-
-The Flask development server should now be running, and you can access the API at [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
-
-## API Endpoints
-
-### 1. Hello World
-
-```text
-    Endpoint: /
-    Method: GET
-    Description: Returns a simple "Hello, World!" message.
+```bash
+pip install flask
+pip install flask-cors
 ```
 
-### 2. Get All Quotes
+Start the web applicatie met 'Live Server' in Visual Studio Code
 
-```text
-    Endpoint: /quotes
-    Method: GET
-    Description: Returns a JSON object containing a list of all available quotes.
+![Alt text](screenshot.png)
+
+### 2. Lijst met quotes aanmaken
+
+Voeg enkele initiële quotes toe om mee te beginnen. Deze worden opgehaald en weergegeven door de API.
+
+```python
+quotes = ["Reach for the sun!", "Start where the rest stops!", "Learn, code, repeat."]
 ```
 
-### 3. Get Random Quote
+### 3. API endpoints aanmaken
 
-```text
-    Endpoint: /quote
-    Method: GET
-    Description: Returns a JSON object containing a randomly selected quote from the collection.
-```
+### GET /quotes: Geeft alle quotes terug
 
-### 4. Add New Quote
+```python
 
-```text
-    Endpoint: /quotes
-    Method: POST
-    Description: Adds a new quote to the collection.
-
-    Request Body:
-    {
-        "quote": "Your new quote here"
-    }
-
-    Success Response:
-    {
-        "message": "Quote added successfully"
-    }
-    
-    Error Response:
-    {
-        "error": "Invalid request"
-    }
+@app.route('/quotes', methods=['GET'])
+def get_quotes():
+    return jsonify({'quotes': quotes})
 
 ```
 
-## Contributors
+---
 
-Sibren Eeckhout & Lukas Olivier
+### POST /quotes: Voegt een quote toe aan de lijst
+
+We zullen eerst de data uit de request halen. Deze data wordt in JSON formaat verstuurd. We gebruiken de methode get_json() om de data uit de request te halen.
+
+```python
+@app.route('/quotes', methods=['POST'])
+def add_quote():
+    data = request.get_json()
+```
+
+We verwachten een 'quote' in de data. Deze quote voegen we toe aan de lijst met quotes.
+
+```python
+quotes.append(data['quote'])
+```
+
+We geven de quote terug als response.
+
+```python
+return jsonify({'quote': data['quote']})
+```
+
+---
+
+### GET /qoute: geeft een willigkeurige quote terug**
+
+Probeer deze zelfstandig uit te werken. Je kan de random module gebruiken om een willekeurige quote te selecteren.
+
+```python
+import random
+
+randomQuote = random.choice(quotes)
+```
+
+Als je hiermee klaar bent, roep je een van de leerlingen aan om de oplossing te tonen. Wees vrij om nog endpoints toe te voegen. Bijvoorbeeld om een quote te verwijderen of te wijzigen.

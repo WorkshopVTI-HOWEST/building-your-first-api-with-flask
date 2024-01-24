@@ -1,0 +1,14 @@
+version: '3'
+services:
+  flask-app:
+    image: python:3.8-slim
+    working_dir: /
+    volumes:
+      - ./app:/app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5000
+    command: "flask run"
