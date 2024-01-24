@@ -85,7 +85,7 @@ return jsonify({'quotes': quotes})
 
 Als dit gelukt is, is het mogelijk om een quote toe te voegen aan de lijst.  Als je de quote hebt toegevoegd, zal die verschijnen in lijst met quotes in de webapplicatie.
 
-### GET /qoute: geeft een willigkeurige quote terug
+### GET /qoute: geeft een willigkeurige quote terug.
 
 Probeer deze zelfstandig uit te werken. Je kan de random module gebruiken om een willekeurige quote te selecteren.
 
@@ -95,4 +95,32 @@ import random
 randomQuote = random.choice(quotes)
 ```
 
-Als je hiermee klaar bent, roep je een van de leerlingen aan om de oplossing te tonen. Wees vrij om nog endpoints toe te voegen. Bijvoorbeeld om een quote te verwijderen of te wijzigen.
+Als je hiermee klaar bent, roep je een van de leerlingen aan om de oplossing te tonen. Wees vrij om nog endpoints toe te voegen. 
+
+### DELETE /quotes/clear: Verwijder alle quotes.
+
+Dit endpoint is anders, omdat je een andere CRUD operatie gebruikt. Je gebruikt namelijk DELETE in plaats van POST. 
+
+Maak nu een nieuw endpoint aan met de Delete methode. 
+Om een globale variabele te wijzigen moet je hem initialiseren in je functie als een global variable.
+
+```python
+global quotes
+quotes = []
+```
+
+Vergeet ook niet een gepast bericht te sturen na dat alle quotes verwijderd zijn. 
+
+### GET /quotes/<int:index>: Verwijder alle quotes.
+
+Dit endpoint is speciaal omdat je een specifieke quote vraagt. Je geeft een ID me (BV: 0,1,2,...) en je verwacht dan de quote terug te krijgen die op die plaats in de array staat.
+
+```python
+def get_specific_quote(index):
+```
+
+Check eerst en vooral ofdat de gevraagde id in de lengte van de array zit (Je kan dit doen met een if statement).
+
+Indien je ID groter is of gelijk aan nul of kleiner is dan de lengte van de array kan je de juiste quote terug sturen. 
+
+
