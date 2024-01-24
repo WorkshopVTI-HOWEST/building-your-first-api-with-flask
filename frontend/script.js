@@ -6,7 +6,23 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("quoteForm").addEventListener("submit", function (e) {
     sendQuote(e);
   });
+
+  document.getElementById("randomQuoteForm").addEventListener("submit", function (e) {
+    getRandomQuote(e);
+  });
 });
+
+function getRandomQuote(e) {
+  e.preventDefault();
+
+  fetch(API_URL + "/quote")
+    .then((response) => response.json())
+    .then((data) => {
+      const quote = data.quote;
+      const quoteDisplay = document.getElementById("randomQuote");
+      quoteDisplay.innerText = quote;
+    });
+}
 
 function getQuotes() {
   fetch(API_URL + "/quotes")
@@ -29,6 +45,11 @@ function sendQuote(e) {
   const quoteInput = document.getElementById("quote");
   const quote = quoteInput.value;
 
+  if (!quote) {
+    alert("Please enter a quote");
+    return;
+  }
+
   fetch(API_URL + "/quotes", {
     method: "POST",
     headers: {
@@ -38,13 +59,12 @@ function sendQuote(e) {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json();
+        alert("Quote is toegevoegd");
       } else {
-        throw new Error("Error: " + response.statusText);
+        alert("Er is iets misgegaan");
       }
     })
-    .then((data) => {
-      alert(data.message);
+    .then(() => {
       quoteInput.value = "";
       const quoteItem = document.createElement("li");
       quoteItem.innerText = quote;

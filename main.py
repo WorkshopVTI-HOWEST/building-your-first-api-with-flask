@@ -14,7 +14,22 @@ def hello_world():
 ### Jullie code hieronder ###
 
 
+quotes = ["Reach for the sun!", "Start where the rest stops!", "Learn, code, repeat."]
 
+@app.route('/quotes', methods=['GET'])
+def get_quotes():
+    return jsonify({'quotes': quotes})
+
+@app.route('/quotes', methods=['POST'])
+def add_quote():
+    data = request.get_json()
+    quotes.append(data['quote'])
+    return jsonify({'quotes': quotes})
+
+@app.route('/quote', methods=['GET'])
+def get_quote():
+    randomQuote = random.choice(quotes)
+    return jsonify({'quote': randomQuote})
 
 ### Jullie code hierboven ###
 

@@ -20,9 +20,20 @@ pip install flask-cors
 
 Navigeer naar de 'frontend' map en klik op 'index.html'. Start daarna the web applicatie met 'Live Server' in Visual Studio Code. Er zal een browser openen met de webapplicatie in je standaard browser.
 
-![Alt text](screenshot.png)
+![Live server locatie](liveserver.png)
 
 Hierop kan je de API testen. Je zal zien dat de API nog niet werkt. Dit komt omdat we de endpoints nog niet hebben aangemaakt. Geen zorgen, aan de webapplicatie moet je niets veranderen. Deze zal automatisch de data van de API ophalen en weergeven.
+
+Start nu de Flask applicatie op. Dit doe je door het volgende commando uit te voeren in de terminal:
+
+```bash
+python main.py
+```
+
+Als alles goed is gegaan, zal je een bericht zien dat de applicatie draait op [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+Let op! Als je een fout maakt in de code, zal de applicatie crashen. Je zal dan een foutmelding zien in de terminal. Als je de fout hebt opgelost, moet je de applicatie opnieuw opstarten met het bovenstaande commando.
+![Error voorbeeld](error.png)
 
 ### 2. Lijst met quotes aanmaken
 
@@ -44,11 +55,15 @@ def get_quotes():
 
 ```
 
+Als je nu de webapplicatie opnieuw laadt, zal je de quotes zien verschijnen.
+
 ---
 
 ### POST /quotes: Voegt een quote toe aan de lijst
 
-We zullen eerst de data uit de request halen. Deze data wordt in JSON formaat verstuurd. We gebruiken de methode get_json() om de data uit de request te halen.
+Nu is het tijd om zelf een endpoint aan te maken. We gaan een quote toevoegen aan de lijst met quotes.
+
+We zullen eerst de data uit de request halen. Deze data wordt in JSON formaat verstuurd. We gebruiken de methode `get_json()` om de data uit de request te halen.
 
 ```python
 @app.route('/quotes', methods=['POST'])
@@ -62,13 +77,13 @@ We verwachten een 'quote' in de data. Deze quote voegen we toe aan de lijst met 
 quotes.append(data['quote'])
 ```
 
-We geven de quote terug als response.
+Als laatste geven we de lijst met quotes terug. Dit is niet verplicht, maar het is wel handig om te zien of de quote is toegevoegd. Let op de indentatie (tab)!
 
 ```python
-return jsonify({'quote': data['quote']})
+return jsonify({'quotes': quotes})
 ```
 
----
+Als dit gelukt is, is het mogelijk om een quote toe te voegen aan de lijst.  Als je de quote hebt toegevoegd, zal die verschijnen in lijst met quotes in de webapplicatie.
 
 ### GET /qoute: geeft een willigkeurige quote terug
 

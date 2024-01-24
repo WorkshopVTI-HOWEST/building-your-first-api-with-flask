@@ -3,18 +3,23 @@
 <head>
     <title>Flask Quote API</title>
     <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Flask Quote API</h1>
 
     <form id="quoteForm">
-        <label for="quote">New Quote:</label><br>
-        <input type="text" id="quote" name="quote"><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Toevoegen">
+        <input type="text" id="quote" name="quote" placeholder="Schrijf hier je nieuwe quote"><br>
     </form>
 
-    <h2>Existing Quotes:</h2>
+    <form id="randomQuoteForm">
+        <input type="submit" value="Toon willigkeurige quote">
+        <p id="randomQuote"></p>
+    </form>
+
+    <h2>Bestaande Quotes:</h2>
     <ul id="quoteList"></ul>
 </body>
 </html>
