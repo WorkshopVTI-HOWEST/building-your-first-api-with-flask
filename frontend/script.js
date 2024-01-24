@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("clearQuotes").addEventListener("submit", function (e) {
     removeQuotes(e);
   });
+
+  document.getElementById("quoteById").addEventListener("submit", function (e) {
+    getQuoteById(e);
+  });
 });
 
 function getRandomQuote(e) {
@@ -59,6 +63,28 @@ function removeQuotes(e) {
     })
     .catch((error) => {
       console.error("Error clearing quotes:", error);
+    });
+}
+
+function getQuoteById(e) {
+  e.preventDefault();
+  const quoteId = document.getElementById("id").value;
+
+  fetch(API_URL + "/quotes/" + quoteId)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Quote not found");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const quoteResult = document.getElementById("quoteByIdResult");
+      quoteResult.innerText = "Quote: " + data.quote;
+    })
+    .catch((error) => {
+      console.error("Error getting quote by ID:", error);
+      const quoteResult = document.getElementById("quoteByIdResult");
+      quoteResult.innerText = "Error: Quote not found";
     });
 }
 
