@@ -68,7 +68,7 @@ return jsonify({'quote': data['quote']})
 
 ---
 
-### GET /qoute: geeft een willigkeurige quote terug**
+### GET /qoute: geeft een willigkeurige quote terug
 
 Probeer deze zelfstandig uit te werken. Je kan de random module gebruiken om een willekeurige quote te selecteren.
 
