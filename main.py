@@ -32,7 +32,18 @@ def add_quote():
     else:
         return jsonify({'error': 'Invalid request'}), 400
 
+@app.route('/quotes/clear', methods=['DELETE'])
+def clear_quotes():
+    global quotes
+    quotes = []
+    return jsonify({'message': 'All quotes cleared successfully'})
 
+@app.route('/quotes/<int:index>', methods=['GET'])
+def get_specific_quote(index):
+    if 0 <= index < len(quotes):
+        return jsonify({'quote': quotes[index]})
+    else:
+        return jsonify({'error': 'Invalid index'}), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
