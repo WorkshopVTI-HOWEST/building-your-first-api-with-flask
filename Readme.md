@@ -22,6 +22,8 @@ Start the web applicatie met 'Live Server' in Visual Studio Code
 
 ![Alt text](screenshot.png)
 
+Hierop kan je de API testen. Je zal zien dat de API nog niet werkt. Dit komt omdat we de endpoints nog niet hebben aangemaakt. Geen zorgen, aan de webapplicatie moet je niets veranderen. Deze zal automatisch de data van de API ophalen en weergeven.
+
 ### 2. Lijst met quotes aanmaken
 
 Voeg enkele initiële quotes toe om mee te beginnen. Deze worden opgehaald en weergegeven door de API.
