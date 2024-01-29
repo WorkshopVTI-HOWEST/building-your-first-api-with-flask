@@ -111,7 +111,7 @@ quotes = []
 
 Vergeet ook niet een gepast bericht te sturen na dat alle quotes verwijderd zijn. 
 
-### GET /quotes/<int:index>: Verwijder alle quotes.
+### GET /quotes/<int:index>: Vraage een specifieke quote.
 
 Dit endpoint is speciaal omdat je een specifieke quote vraagt. Je geeft een ID me (BV: 0,1,2,...) en je verwacht dan de quote terug te krijgen die op die plaats in de array staat.
 
@@ -122,5 +122,10 @@ def get_specific_quote(index):
 Check eerst en vooral ofdat de gevraagde id in de lengte van de array zit (Je kan dit doen met een if statement).
 
 Indien je ID groter is of gelijk aan nul of kleiner is dan de lengte van de array kan je de juiste quote terug sturen. 
+
+
+### DELETE /quotes/<int:index>: Verwijder een specifieke quote.
+
+Nu is het tijd om eens een specifieke quote te verwijderen. Maak gebruik van de vorige twee oefeningen om deze oefening op te lossen. 
 
 
