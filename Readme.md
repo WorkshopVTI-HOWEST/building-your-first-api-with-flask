@@ -95,11 +95,10 @@ import random
 randomQuote = random.choice(quotes)
 ```
 
-Als je hiermee klaar bent, roep je een van de leerlingen aan om de oplossing te tonen. Wees vrij om nog endpoints toe te voegen. 
 
 ### DELETE /quotes/clear: Verwijder alle quotes.
 
-Dit endpoint is anders, omdat je een andere CRUD operatie gebruikt. Je gebruikt namelijk DELETE in plaats van POST. 
+Bij deze endpoint zal je gebruik moeten maken van de DELETE method. 
 
 Maak nu een nieuw endpoint aan met de Delete methode. 
 Om een globale variabele te wijzigen moet je hem initialiseren in je functie als een global variable.
@@ -111,7 +110,7 @@ quotes = []
 
 Vergeet ook niet een gepast bericht te sturen na dat alle quotes verwijderd zijn. 
 
-### GET /quotes/<int:index>: Vraage een specifieke quote.
+### GET /quotes/<int:index>: Vraag een specifieke quote.
 
 Dit endpoint is speciaal omdat je een specifieke quote vraagt. Je geeft een ID me (BV: 0,1,2,...) en je verwacht dan de quote terug te krijgen die op die plaats in de array staat.
 
