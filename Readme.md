@@ -120,11 +120,8 @@ def get_specific_quote(index):
 
 Check eerst en vooral ofdat de gevraagde id in de lengte van de array zit (Je kan dit doen met een if statement).
 
-Indien je ID groter is of gelijk aan nul of kleiner is dan de lengte van de array kan je de juiste quote terug sturen. 
+Indien je ID groter is of gelijk aan nul of kleiner is dan de lengte van de array kan je de juiste quote terug sturen.
 
+### DELETE /quotes/<int:index>: Verwijder een specifieke quote
 
-### DELETE /quotes/<int:index>: Verwijder een specifieke quote.
-
-Nu is het tijd om eens een specifieke quote te verwijderen. Maak gebruik van de vorige twee oefeningen om deze oefening op te lossen. 
-
-
+Nu is het tijd om eens een specifieke quote te verwijderen. Maak gebruik van de vorige twee oefeningen om deze oefening op te lossen.
