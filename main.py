@@ -11,10 +11,23 @@ def hello_world():
     return 'Hello, World!'
 
 
-### Jullie code hieronder ###
+### Krijg alle quotes terug.
 
 
-### Jullie code hierboven ###
+### Krijg een random quote terug.
+
+
+### Voeg een nieuwe quote toe.
+
+
+### Verwijder alle quotes.
+
+
+### Vraag een specifieke quote op.
+
+
+### Verwijder een specifieke quote.
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
