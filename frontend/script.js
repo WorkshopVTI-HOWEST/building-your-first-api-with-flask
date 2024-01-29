@@ -132,7 +132,7 @@ function sendQuote(e) {
 
 function deleteQuoteById(e) {
   e.preventDefault();
-  const quoteId = document.getElementById("id").value;
+  const quoteId = document.getElementById("idDelete").value;
 
   fetch(`${API_URL}/quotes/${quoteId}`, {
       method: "DELETE"
