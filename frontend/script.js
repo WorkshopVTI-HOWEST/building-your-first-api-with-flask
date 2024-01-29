@@ -115,16 +115,15 @@ function sendQuote(e) {
     .then((response) => {
       if (response.ok) {
         alert("Quote is toegevoegd");
+        quoteInput.value = "";
+        const quoteItem = document.createElement("li");
+        quoteItem.innerText = quote;
+        quotesList.appendChild(quoteItem);
       } else {
         alert("Er is iets misgegaan");
       }
     })
-    .then(() => {
-      quoteInput.value = "";
-      const quoteItem = document.createElement("li");
-      quoteItem.innerText = quote;
-      quotesList.appendChild(quoteItem);
-    })
+
     .catch((error) => {
       alert(error);
     });

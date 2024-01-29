@@ -14,10 +14,6 @@ def hello_world():
 
 ### Krijg alle quotes terug.
 
-@app.route('/quotes', methods=['GET'])
-def get_quotes():
-    return jsonify(quotes)
-
 
 ### Krijg een random quote terug.
 
