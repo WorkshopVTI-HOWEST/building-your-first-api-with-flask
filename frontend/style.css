@@ -38,6 +38,8 @@ input[type="submit"] {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    width: 25rem;
+    text-align: center;
 }
 
 input[type="submit"]:hover {
@@ -53,7 +55,6 @@ form{
 
 #randomQuoteForm input[type="submit"] {
     height: 100%;
-    width: fit-content;
 }
 
 #randomQuote{
@@ -66,6 +67,19 @@ form{
     height: 100%;
     color: #333;
 }
+
+p{
+    font-size: 1.5em;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: white;
+    flex-grow: 1;
+    height: 100%;
+    color: #333;
+}
+
+
 
 ul {
     list-style-type: none;
@@ -83,4 +97,8 @@ li:hover {
 
 li:not(:last-child) {
     border-bottom: 1px solid #ccc;
+}
+
+.delete{
+    background-color: rgb(167, 0, 0) !important;
 }

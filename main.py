@@ -1,17 +1,22 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS 
+from flask_cors import CORS  # Import the CORS extension
 import random
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS for all routes
 
+# Sample initial quotes
+quotes = ["Reach for the sun!", "Start where the rest stops!", "Learn, code, repeat."]
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
 
-
 ### Krijg alle quotes terug.
+
+@app.route('/quotes', methods=['GET'])
+def get_quotes():
+    return jsonify(quotes)
 
 
 ### Krijg een random quote terug.
