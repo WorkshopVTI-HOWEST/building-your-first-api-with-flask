@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("randomQuoteForm").addEventListener("submit", function (e) {
     getRandomQuote(e);
   });
+
+  document.getElementById("clearQuotes").addEventListener("submit", function (e) {
+    removeQuotes(e);
+  });
+
+  document.getElementById("quoteById").addEventListener("submit", function (e) {
+    getQuoteById(e);
+  });
+
+  document.getElementById("removeQuoteById").addEventListener("submit", function (e) {
+    deleteQuoteById(e);
+  });
 });
 
 function getRandomQuote(e) {
@@ -37,6 +49,49 @@ function getQuotes() {
       });
     });
 }
+
+function removeQuotes(e) {
+  e.preventDefault();
+  console.log("test");
+  fetch(API_URL + "/quotes/clear", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const quoteList = document.getElementById("quoteList");
+      quoteList.innerHTML = "";
+      getQuotes();
+    })
+    .catch((error) => {
+      console.error("Error clearing quotes:", error);
+    });
+}
+
+function getQuoteById(e) {
+  e.preventDefault();
+  const quoteId = document.getElementById("id").value;
+
+  fetch(API_URL + "/quotes/" + quoteId)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Quote not found");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const quoteResult = document.getElementById("quoteByIdResult");
+      quoteResult.innerText = "Quote: " + data.quote;
+    })
+    .catch((error) => {
+      console.error("Error getting quote by ID:", error);
+      const quoteResult = document.getElementById("quoteByIdResult");
+      quoteResult.innerText = "Error: Quote not found";
+    });
+}
+
 
 function sendQuote(e) {
   e.preventDefault();
@@ -73,4 +128,30 @@ function sendQuote(e) {
     .catch((error) => {
       alert(error);
     });
+}
+
+function deleteQuoteById(e) {
+  e.preventDefault();
+  const quoteId = document.getElementById("id").value;
+
+  fetch(`${API_URL}/quotes/${quoteId}`, {
+      method: "DELETE"
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error("Quote not found");
+      }
+      return response.json();
+  })
+  .then(data => {
+      alert(`Quote removed successfully: ${data.removed_quote}`);
+      const quoteList = document.getElementById("quoteList");
+      quoteList.innerHTML = "";
+      getQuotes();
+
+  })
+  .catch(error => {
+      console.error("Error removing quote by ID:", error);
+      alert("Error: Quote not found or could not be removed");
+  });
 }
