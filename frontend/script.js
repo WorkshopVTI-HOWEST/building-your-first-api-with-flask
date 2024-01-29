@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("quoteById").addEventListener("submit", function (e) {
     getQuoteById(e);
   });
+
+  document.getElementById("removeQuoteById").addEventListener("submit", function (e) {
+    deleteQuoteById(e);
+  });
 });
 
 function getRandomQuote(e) {
@@ -124,4 +128,30 @@ function sendQuote(e) {
     .catch((error) => {
       alert(error);
     });
+}
+
+function deleteQuoteById(e) {
+  e.preventDefault();
+  const quoteId = document.getElementById("id").value;
+
+  fetch(`${API_URL}/quotes/${quoteId}`, {
+      method: "DELETE"
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error("Quote not found");
+      }
+      return response.json();
+  })
+  .then(data => {
+      alert(`Quote removed successfully: ${data.removed_quote}`);
+      const quoteList = document.getElementById("quoteList");
+      quoteList.innerHTML = "";
+      getQuotes();
+
+  })
+  .catch(error => {
+      console.error("Error removing quote by ID:", error);
+      alert("Error: Quote not found or could not be removed");
+  });
 }
