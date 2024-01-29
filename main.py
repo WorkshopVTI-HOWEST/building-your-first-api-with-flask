@@ -45,5 +45,15 @@ def get_specific_quote(index):
     else:
         return jsonify({'error': 'Invalid index'}), 404
 
+@app.route('/quotes/<int:index>', methods=['DELETE'])
+def remove_specific_quote(index):
+    global quotes
+    print(quotes)
+    if 0 <= index < len(quotes):
+        removed_quote = quotes.pop(index)
+        return jsonify({'message': 'Quote removed successfully', 'removed_quote': removed_quote})
+    else:
+        return jsonify({'error': 'Invalid index'}), 404
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
